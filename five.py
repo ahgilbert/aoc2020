@@ -1,7 +1,7 @@
 from os import path
 
 def fetch_input():
-    with open(path.join('.', 'hiones.txt')) as data:
+    with open(path.join('.', 'in5.txt')) as data:
         return list(data.readlines())
 
 def to_seat(boarder):
