@@ -37,3 +37,8 @@ if __name__ == '__main__':
             maxSeat = passenger
 
     print(f"{maxSeat.strip()} at {maxSeatId}")
+    # Hey reader, I solved part 2 with a bunch of bash hackery:
+    #     #> sed 's/[RL]//g' | sort | uniq -c | grep 7
+    # showed me the row, and
+    #     #> grep 'BFBFBFF' in5.txt | sort
+    # gave me a sorted list to eyeball
