@@ -6,26 +6,23 @@ def fetch_input(fn):
         raw = text.split('\n\n')
         return raw
 
-def clean_line(line):
-    line = line.replace('\n',' ')
-
-def count_qs_union(group):
-    uniques = set([])
-    for foo in [set(person) for person in group]:
-        uniques = uniques.union(foo)
-    return len(uniques)
-
-def count_qs_intersect(group):
-    ppl = [set(person) for person in group]
-    return len(set.intersection(*ppl))
+requiredFields = set(['byr','iyr','eyr','hgt','hcl','ecl','pid'])
 
 if __name__ == '__main__':
     sloppy = fetch_input('in4.txt')
+    passports = []
     for slop in sloppy:
         d = {}
         items = slop.split()
         kvps = [foo.split(':') for foo in items]
         for kvp in kvps:
             d[kvp[0]] = kvp[1]
+        passports.append(d)
 
-        print(d)
+    part1 = 0
+    for passport in passports:
+        ks = set(passport.keys())
+        if len(ks.intersection(requiredFields)) == 7:
+            part1 = part1 + 1
+
+    print("part 1: ", part1)
